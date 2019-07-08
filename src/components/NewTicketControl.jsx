@@ -1,35 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ConfirmationQuestions from './ConfirmationQuestions';
 import NewTicketForm from './NewTicketForm';
+import PropTypes from 'prop-types';
 
-class NewTicketControl extends Component {
+class NewTicketControl extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
       formVisibleOnPage: false
     };
-    this.handleTroubleShootingConfirmation = this.handleTroubleShootingConfirmation.bind(
-      this
-    );
+    this.handleTroubleshootingConfirmation = this.handleTroubleshootingConfirmation.bind(this);
   }
 
-  handleTroubleShootingConfirmation() {
-    this.setState({ formVisibleOnPage: true });
-    // console.log(`formVisibleOnPage is current set to ${this.state.formVisibleOnPage}`);
+  handleTroubleshootingConfirmation(){
+    this.setState({formVisibleOnPage: true});
   }
-  render() {
+
+  render(){
     let currentlyVisibleContent = null;
-    if (this.state.formVisibleOnPage) {
-      currentlyVisibleContent = <NewTicketForm />;
+    if (this.state.formVisibleOnPage){
+      currentlyVisibleContent = <NewTicketForm onNewTicketCreation={this.props.onNewTicketCreation}/>;
     } else {
-      currentlyVisibleContent = (
-        <ConfirmationQuestions
-          onTroubleShootingConfirmation={this.handleTroubleShootingConfirmation}
-        />
-      );
+      currentlyVisibleContent = <ConfirmationQuestions onTroubleshootingConfirmation={this.handleTroubleshootingConfirmation}/>;
     }
-    return <div>{currentlyVisibleContent}</div>;
+    return (
+      <div>
+        {currentlyVisibleContent}
+      </div>
+    );
   }
 }
+
+NewTicketControl.propTypes = {
+  onNewTicketCreation: PropTypes.func
+};
 
 export default NewTicketControl;

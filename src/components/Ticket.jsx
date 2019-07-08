@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Ticket(props) {
-  var myStyles = {
-    backgroundColor: '#ecf0f1',
-    fontFamily: 'sans-serif',
-    paddingTop: '20'
-  };
+function Ticket(props){
   return (
-    <div style={myStyles}>
+    <div>
       <h3>{props.location} - {props.names}</h3>
       <p><em>{props.issue}</em></p>
-      <hr/>      
+      <hr/>
     </div>
   );
 }
+
 Ticket.propTypes = {
   names: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
