@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TicketDetail = (props) => {
-  // setTimeout(()=>{
   return (
     <div>
       <h1>{props.selectedTicket.names} - {props.selectedTicket.location} </h1>
@@ -11,7 +10,6 @@ const TicketDetail = (props) => {
       
     </div>
   );
-  // );}, 1000);
 };
 
 TicketDetail.propTypes = {
